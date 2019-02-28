@@ -81,7 +81,6 @@ var server = http.createServer(function (req, res) {
                 console.log("ajax error");
                 //servResponse(req, res)
             }
-            // przy starcie, na żądanie klienta, zwróć JSON-a z nazwami katalogów zczytane z serwera
             break;
         default: break;
     }
