@@ -196,3 +196,10 @@ body {
     z-index: 1000;
     background: cyan;
 }
+
+.visualBar{
+    height: 20px;
+    display: block;
+    background: red;
+    margin-bottom: 1px;
+}
