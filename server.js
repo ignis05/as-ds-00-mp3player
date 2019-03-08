@@ -9,7 +9,7 @@ var serverDatabase = {
 var server = http.createServer(function (req, res) {
     switch (req.method) {
         case "GET":
-            console.log(`requested adres: ${decodeURI(req.url)}`.white)
+            console.log(`requested adres: ${decodeURI(req.url)}`)
             var fileEXTEN = req.url.split(".")[req.url.split(".").length - 1]
             if (req.url == "/") {
                 fs.readFile(`static/index.html`, function (error, data) {
@@ -29,7 +29,7 @@ var server = http.createServer(function (req, res) {
             else {
                 fs.readFile(`.${decodeURI(req.url)}`, function (error, data) {
                     if (error) {
-                        console.log(`cant find file ${decodeURI(req.url)}`.red);
+                        console.log(`cant find file ${decodeURI(req.url)}`);
                         res.writeHead(404, { 'Content-Type': 'text/html;charset=utf-8' });
                         res.write("<h1>Error 404 - file doesnt exist<h1>");
                         res.end();
@@ -59,7 +59,7 @@ var server = http.createServer(function (req, res) {
                         }
                         res.write(data);
                         res.end();
-                        console.log(`send file: ${decodeURI(req.url)}`.green)
+                        console.log(`send file: ${decodeURI(req.url)}`)
                     }
                 });
             }
