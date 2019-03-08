@@ -10,6 +10,7 @@ class Ui {
         this.playingAlbum = null;
         this.playingFromPlaylist = false;
         this.playlist = null;
+        this.activeOverlay = false;
         this.bindListeners()
     }
 
@@ -139,6 +140,23 @@ class Ui {
         bar2.appendTo(bar)
 
         $("#btPlaylist").click(() => { ui.renderPlaylist() })
+
+        var overlay = $("<div id='overlay'>")
+        overlay.css("display","none")
+        $(document.body).append(overlay)
+
+        document.addEventListener("keydown", e => {
+            if (e.code == "Space") {
+                if (ui.activeOverlay) {
+                    overlay.css("display","none")
+                    ui.activeOverlay = false
+                }
+                else {
+                    overlay.css("display","block")
+                    ui.activeOverlay = true
+                }
+            }
+        })
     }
 
     async renderPlaylist() {
@@ -202,15 +220,15 @@ class Ui {
                 c.appendTo(z)
 
                 let aa = $("<td class='tableButton2'>")
-            aa.appendTo(tr)
-            aa.on("click", async function () {
-                console.log(`removing from playlist song: ${playlist[i].song} (album: ${playlist[i].album})`);
-                net.removeSongFromPlaylist(playlist[i].album, playlist[i].song)
-                ui.renderPlaylist()
-            })
+                aa.appendTo(tr)
+                aa.on("click", async function () {
+                    console.log(`removing from playlist song: ${playlist[i].song} (album: ${playlist[i].album})`);
+                    net.removeSongFromPlaylist(playlist[i].album, playlist[i].song)
+                    ui.renderPlaylist()
+                })
 
-            let d = $("<img class='btPlus' src='/static/img/minus.png'>")
-            d.appendTo(aa)
+                let d = $("<img class='btPlus' src='/static/img/minus.png'>")
+                d.appendTo(aa)
             }
             ui.setButtonsOnTable()
             if (ui.playingAlbum == ui.currentAlbum) { //checks if alrady playing song from this album - restores active status of <tr>
