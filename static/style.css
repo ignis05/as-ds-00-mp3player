@@ -201,5 +201,5 @@ body {
     height: 20px;
     display: block;
     background: red;
-    margin-bottom: 1px;
+    position: absolute;
 }
