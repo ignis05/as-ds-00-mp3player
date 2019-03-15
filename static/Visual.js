@@ -12,7 +12,32 @@ class Visual {
         console.log(data);
         var overlay = $("#overlay")
         $(".visualBar").remove()
-        $(".historyBar").remove()
+        let hist = $("<div class='historyBar'>")
+        for (let i in data) {
+            data[i] = ~~data[i]
+        }
+        let sum = data.reduce((summ, a) => summ + a)
+        console.log(sum);
+        let r = 255
+        let g = 255
+        let b = 0
+        let color = `rgb(${r},${g},${b})`
+        hist
+            .css("height", sum / 100)
+            .css("background", color)
+            .css("left", $(window).width() - 20)
+            .appendTo(overlay)
+
+        Object.values(document.getElementsByClassName("historyBar")).forEach(bar => {
+            let offset = bar.style.left.slice(0, -2)
+            offset = offset - 20
+            if (offset > 0) {
+                bar.style.left = offset + "px"
+            }
+            else {
+                bar.remove()
+            }
+        })
         for (let i in data) {
             let top = 50 + (25 * i)
             let side = $(window).width() / 2 + 5
@@ -37,13 +62,5 @@ class Visual {
                 .css("background", color)
                 .appendTo(overlay)
         }
-        let hist = $("<div class='historyBar'>")
-        for (let i in data) {
-            data[i] = ~~data[i]
-        }
-        let sum = data.reduce((summ, a) => summ + a)
-        console.log(sum);
-        hist
-            .appendTo(overlay)
     }
 }

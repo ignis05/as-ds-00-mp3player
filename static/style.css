@@ -207,4 +207,7 @@ body {
 
 .historyBar{
     position: absolute;
+    bottom: 20px;
+    width: 20px;
+    border:2px solid black;
 }
