@@ -20,18 +20,20 @@ class Visual {
             let color = `rgb(${r},${g},${b})`
 
             let left = $("<div class='visualBar'>")
-            left.css("width", data[i])
-            left.css("left", side)
-            left.css("top", top)
-            left.css("background", color)
-            left.appendTo(overlay)
+            left
+                .css("width", data[i])
+                .css("left", side)
+                .css("top", top)
+                .css("background", color)
+                .appendTo(overlay)
 
             let right = $("<div class='visualBar'>")
-            right.css("width", data[i])
-            right.css("right", side)
-            right.css("top", top)
-            right.css("background", color)
-            right.appendTo(overlay)
+            right
+                .css("width", data[i])
+                .css("right", side)
+                .css("top", top)
+                .css("background", color)
+                .appendTo(overlay)
         }
     }
 }
