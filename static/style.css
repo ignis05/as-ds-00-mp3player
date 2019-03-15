@@ -202,4 +202,9 @@ body {
     display: block;
     background: red;
     position: absolute;
+    border-radius: 5px;
+}
+
+.historyBar{
+    position: absolute;
 }
