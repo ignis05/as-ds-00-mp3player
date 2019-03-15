@@ -12,7 +12,6 @@ class Visual {
         console.log(data);
         var overlay = $("#overlay")
         $(".visualBar").remove()
-        let hist = $("<div class='historyBar'>")
         for (let i in data) {
             data[i] = ~~data[i]
         }
@@ -22,8 +21,9 @@ class Visual {
         let g = 255
         let b = 0
         let color = `rgb(${r},${g},${b})`
+        let hist = $("<div class='historyBar'>")
         hist
-            .css("height", sum / 100)
+            .css("height", sum / 50)
             .css("background", color)
             .css("left", $(window).width() - 20)
             .appendTo(overlay)
@@ -39,7 +39,7 @@ class Visual {
             }
         })
         for (let i in data) {
-            let top = 50 + (25 * i)
+            let top = 20 + (25 * i)
             let side = $(window).width() / 2 + 5
             let r = 255
             let g = 0
