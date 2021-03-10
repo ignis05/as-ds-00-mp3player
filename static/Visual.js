@@ -9,14 +9,14 @@ class Visual {
         requestAnimationFrame(this.render.bind(this)); // bind(this) przekazuje this do metody render
         var data = music.getData()
         data = data.split(",")
-        console.log(data);
+        // console.log(data);
         var overlay = $("#overlay")
         $(".visualBar").remove()
         for (let i in data) {
             data[i] = ~~data[i]
         }
         let sum = data.reduce((summ, a) => summ + a)
-        console.log(sum);
+        // console.log(sum);
         let r = 255
         let g = 255
         let b = 0
